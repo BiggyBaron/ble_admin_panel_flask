@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<title>Cleverest Navigation</title>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8">
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+</style>
+<body class="w3-theme-l5">
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Cleverest Navigation Admin Panel</a>
+ </div>
+</div>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+      <!-- Profile -->
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+         <h4 class="w3-center">Block: 
+          <select id="pic">
+            <option value="at-1" >Atrium floor 1</option>
+            <option value="at-2" >Atrium floor 2</option>
+            <option value="c2-1" selected >C2 floor 1</option>
+            <option value="c2-e">C2 floor Entrance</option>
+            <option value="c2-2">C2 floor 2</option>
+            <option value="c2-3">C2 floor 3</option>
+            <option value="c2-4">C2 floor 4</option>
+            <option value="c2-5">C2 floor 5</option>
+            <option value="ss-2">Skywalk South</option>
+            <option value="sn-2">Skywalk North</option>
+          </select>
+        </h4>
+         <p class="w3-center"><img id="map_pic" src="/static/floors/c2-1.jpg" style="width:90%;" alt="Avatar" data-enlargeable style="cursor: zoom-in"></p>
+         <hr>
+         <form id="upload" name="myform" action="/post" style="display: none;">
+          <input style="display: none;" type="text" id="mac" name="mac" value=""><br>
+          <input style="display: none;" type="text" id="room" name="room" value=""><br>
+          <input style="display: none;" type="text" id="russian_name" name="russian_name" value=""><br>
+          <input style="display: none;" type="text" id="qazaq_name" name="qazaq_name" value=""><br>
+          <input style="display: none;" type="text" id="english_name" name="english_name" value=""><br>
+          <input style="display: none;" type="text" id="owner_ru" name="owner_ru" value=""><br>
+          <input style="display: none;" type="text" id="owner_qz" name="owner_qz" value=""><br>
+          <input style="display: none;" type="text" id="owner_en" name="owner_en" value=""><br>
+          <input style="display: none;" type="text" id="alts" name="alts" value=""><br>
+          <input style="display: none;" type="text" id="phone" name="phone" value=""><br>
+          <input type="submit" value="Submit">
+        </form> 
+        </div>
+      </div>
+      <br>
+    <!-- End Left Column -->
+    </div>
+    
+    <!-- Middle Column -->
+    <div class="w3-col m9">
+    
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <div class="w3-card w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <table id="table_id" class="display">
+                    <thead>
+                    <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Data</th>
+                            <th>Additional</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{table}}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    <!-- End Middle Column -->
+    </div>
+    
+    
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+<br>
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-d3 w3-padding-16">
+  <h5>Cleverest Navigation Admin Panel</h5>
+</footer>
+
+<footer class="w3-container w3-theme-d5">
+  <p>Powered by Cleverest Technologies</p>
+</footer>
+ 
+<script>
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+<script type="text/javascript">
+  $('img[data-enlargeable]').addClass('img-enlargeable').click(function(){
+    var src = $(this).attr('src');
+    var modal;
+    function removeModal(){ modal.remove(); $('body').off('keyup.modal-close'); }
+    modal = $('<div>').css({
+        background: 'RGBA(0,0,0,.5) url('+src+') no-repeat center',
+        backgroundSize: 'contain',
+        width:'100%', height:'100%',
+        position:'fixed',
+        zIndex:'10000',
+        top:'0', left:'0',
+        cursor: 'zoom-out'
+    }).click(function(){
+        removeModal();
+    }).appendTo('body');
+    //handling ESC
+    $('body').on('keyup.modal-close', function(e){
+      if(e.key==='Escape'){ removeModal(); } 
+    });
+});
+</script>
+<script>
+  document.getElementById("pic").addEventListener("change", change_map);
+  
+  function change_map() {
+    var x = document.getElementById("pic");
+    console.log(x.value);
+    document.getElementById("map_pic").src = "/static/floors/" + x.value + ".jpg";
+  }
+
+  const btns = document.querySelectorAll('button[id^=but]')
+
+  btns.forEach(btn => {
+
+    btn.addEventListener('click', event => {
+          console.log( event.target.id );
+          var ID = event.target.id.split("+")[1];
+          console.log(ID);
+          var path = "";
+          document.getElementById("mac").value = ID;
+          document.getElementById("room").value = document.getElementById(ID + "+rn").innerHTML;
+          document.getElementById("russian_name").value = document.getElementById(ID + "+rnam").innerHTML;
+          document.getElementById("qazaq_name").value = document.getElementById(ID + "+qnam").innerHTML;
+          document.getElementById("english_name").value = document.getElementById(ID + "+enam").innerHTML;
+          document.getElementById("owner_ru").value = document.getElementById(ID + "+row").innerHTML;
+          document.getElementById("owner_qz").value = document.getElementById(ID + "+qow").innerHTML;
+          document.getElementById("owner_en").value = document.getElementById(ID + "+eow").innerHTML;
+          document.getElementById("alts").value = document.getElementById(ID + "+al").innerHTML;
+          document.getElementById("phone").value = document.getElementById(ID + "+ph").innerHTML;
+          document.forms["myform"].submit();
+    });
+
+  });
+</script>
+
+</body>
+</html> 
