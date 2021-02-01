@@ -6,12 +6,8 @@ services:
     command: python3 -u ./main.py
     ports:
       - "80:8080"
-    links:
-      - database
     logging:
       driver: "json-file"
       options:
         max-size: "1m"
         max-file: "10"
-    depends_on:
-      - database
